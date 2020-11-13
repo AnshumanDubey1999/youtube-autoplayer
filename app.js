@@ -7,11 +7,15 @@ app.get('/', function(req, res){
   res.render('index')
 })
 
+app.get('/feature', function(req, res){
+  res.render('feature')
+})
+
 if(process.env.PORT)
   app.listen(process.env.PORT, process.env.IP)
 else{
   app.listen(3000, function(){
-    console.log("NutritionSystem is on FIRE!!!")
+    console.log("Autoplayer is on FIRE!!!")
   })
 }
 
