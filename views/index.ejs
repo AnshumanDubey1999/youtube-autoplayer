@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="overflow-x: hidden; overflow-y: hidden;">
+<html lang="en" style="overflow-x: hidden;">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +7,91 @@
   <style>
     iframe{
       width: 100vw;
-      height: 100vh;
+    }
+    h1, h2, h4, p{
+      padding-left: 10px;
+    }
+    i{
+      color: black;
     }
   </style>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/06a7ac0ecc.js" crossorigin="anonymous"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet"/>
+
 </head>
 <body style="margin: 0;">
-  <a href="/feature">
-    <h1>Check our awesome feature!</h1>
-  </a>
+<!-- 1. The <iframe> (video player) will replace this <div> tag. -->
+  <h1 class="my-1 mx-1">Video title how to autoplay YouTube video with YouTube url</h1>
+  <div class="iframe-container">
+    <div id="player"></div>
+  </div>
+  <h4 style="color: red">video sound is now mute<i class="fas fa-volume-mute"></i>, so unmute sound<i class="fas fa-volume-up"></i> for better experience</h4>
+  <p>Watch video on YouTube: <a href="https://youtu.be/Xc25RykxUrM">https://youtu.be/Xc25RykxUrM</a></p>
+
+  <h2>Video Description:</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto temporibus libero voluptatibus aut excepturi dolores perferendis asperiores eum. Dolorem, ab ad! Assumenda eius dolor quasi neque laborum animi sit totam itaque dolorum, obcaecati ullam libero rerum ratione saepe autem quae, repellendus debitis, consectetur doloremque eveniet exercitationem quam dignissimos accusamus excepturi?</p>
+
+  <h2>Other Videos:</h2>
+
+  <p>Watch video on YouTube: <a href="https://youtu.be/Xc25RykxUrM"></a></p>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/Xc25RykxUrM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+  <p>Watch video on YouTube: <a href="https://youtu.be/Xc25RykxUrM">https://youtu.be/Xc25RykxUrM</a></p>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/Xc25RykxUrM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+  <p>Watch video on YouTube: <a href="https://youtu.be/Xc25RykxUrM">https://youtu.be/Xc25RykxUrM</a></p>
+
+
+
+  <script>
+    // 2. This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+  
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  
+    // 3. This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        width: '100%',
+        videoId: 'Xc25RykxUrM',
+        playerVars: { 'autoplay': 1, 'playsinline': 1 },
+        events: {
+          'onReady': onPlayerReady
+        }
+      });
+    }
+  
+    // 4. The API will call this function when the video player is ready.
+    function onPlayerReady(event) {
+      event.target.mute();
+      event.target.playVideo();
+    }
+  </script>
+  
+  <style>
+  /* Make the youtube video responsive */
+    .iframe-container{
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+    .iframe-container iframe{
+      position: absolute;
+      top:0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  
 </body>
 </html>
