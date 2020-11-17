@@ -11,6 +11,9 @@
     h1, h2, h4, p{
       padding: 10px;
     }
+    h3{
+      font-size: 1.5rem;
+    }
     i{
       color: black;
     }
@@ -22,17 +25,17 @@
 </head>
 <body style="margin: 0;">
 <!-- 1. The <iframe> (video player) will replace this <div> tag. -->
-  <h1 class="my-1 mx-1"><%= data.title %> </h1>
+  <h1 class="my-1 mx-1" style="font-size: 2em;"><%= data.title %> </h1>
   <div class="iframe-container">
     <div id="player"></div>
   </div>
-  <h4 style="color: red">video sound is now mute<i class="fas fa-volume-mute"></i>, so unmute sound<i class="fas fa-volume-up"></i> for better experience</h4>
+  <h4 style="color: red; font-size: 1.3em;">video sound is now mute<i class="fas fa-volume-mute"></i>, so unmute sound<i class="fas fa-volume-up"></i> for better experience</h4>
   <p>Watch video on YouTube: <a href="https://youtu.be/<%= data.videoID %>">https://youtu.be/<%= data.videoID %></a></p>
 
-  <h2>Video Description:</h2>
-  <p><%= data.description %> </p>
+  <h3 >Video Description:</h3>
+  <p><%- data.description -%> </p>
 
-  <h2>Other Videos:</h2>
+  <h3>Other Videos:</h3>
   <% data.otherVideos.forEach(vid => { %> 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= vid %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 

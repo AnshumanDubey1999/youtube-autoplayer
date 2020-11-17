@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 
+app.use(express.static(__dirname+"/public"))
+
 
 let obj = {
   title: 'Video title how to autoplay YouTube video with YouTube url',
@@ -18,13 +20,13 @@ let obj = {
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res){
-  let data = fs.readFileSync('./data.json')
+  let data = fs.readFileSync('./public/data.json')
   // console.log(data)
   res.render('index', {data: JSON.parse(data)})
 })
 
 app.get('/admin-panel', function(req, res){
-  let data = fs.readFileSync('./data.json')
+  let data = fs.readFileSync('./public/data.json')
   let obj = JSON.parse(data)
   obj.ids = obj.otherVideos.join('|')
   res.render('edit', {data: obj})
@@ -40,7 +42,7 @@ app.post('/admin-panel', function(req, res){
   else{
     let data = req.body.val
     data.otherVideos = data.ids.split('|')
-    fs.writeFileSync('./data.json', JSON.stringify(data), function(err){
+    fs.writeFileSync('./public/data.json', JSON.stringify(data), function(err){
       if(err)
         console.log("Error Occured!")
     })
@@ -50,7 +52,7 @@ app.post('/admin-panel', function(req, res){
 
 
 
-/*fs.writeFileSync('./data.json', JSON.stringify(obj), function(err){
+/*fs.writeFileSync('./public/data.json', JSON.stringify(obj), function(err){
   if(err)
     console.log("Error Occured!")
 })
